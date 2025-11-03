@@ -9,14 +9,14 @@ export default function Hero() {
       {/* Spline Background */}
       <div className="absolute inset-0">
         <Spline
-          scene="https://prod.spline.design/zhZFnwyOYLgqlLWk/scene.splinecode"
+          scene="https://prod.spline.design/6tUXqVcUA0xgJugv/scene.splinecode"
           style={{ width: '100%', height: '100%' }}
         />
       </div>
 
       {/* Soft gradient overlays (non-interactive so Spline remains interactive) */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-black/80" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_10%,rgba(244,63,94,0.25),transparent)]" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/90" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_10%,rgba(16,185,129,0.25),transparent)]" />
 
       {/* Content */}
       <div className="relative z-10 mx-auto flex h-full max-w-6xl flex-col items-center justify-center px-6 text-center text-white">

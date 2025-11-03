@@ -3,6 +3,9 @@ import Hero from './components/Hero';
 import FeatureGrid from './components/FeatureGrid';
 import Integrations from './components/Integrations';
 import PricingCTA from './components/PricingCTA';
+import DemoPlayer from './components/DemoPlayer';
+import ComparisonSlider from './components/ComparisonSlider';
+import KPIChart from './components/KPIChart';
 
 export default function App() {
   return (
@@ -17,6 +20,9 @@ export default function App() {
           </div>
           <nav className="hidden gap-6 text-sm text-white/80 md:flex">
             <a href="#features" className="hover:text-white">Features</a>
+            <a href="#demo" className="hover:text-white">Demo</a>
+            <a href="#compare" className="hover:text-white">Compare</a>
+            <a href="#metrics" className="hover:text-white">Metrics</a>
             <a href="#integrations" className="hover:text-white">Integrations</a>
             <a href="#download" className="hover:text-white">Pricing</a>
           </nav>
@@ -29,6 +35,9 @@ export default function App() {
         <div id="features">
           <FeatureGrid />
         </div>
+        <DemoPlayer />
+        <ComparisonSlider />
+        <KPIChart />
         <div id="integrations">
           <Integrations />
         </div>
