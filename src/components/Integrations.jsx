@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 
 const brands = [
   { name: 'OBS Studio', color: 'text-white' },
@@ -23,6 +23,18 @@ const plugins = [
 ];
 
 export default function Integrations() {
+  // Simple animated usage bars (no external libs)
+  const [tick, setTick] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setTick((t) => (t + 1) % 120), 1400);
+    return () => clearInterval(id);
+  }, []);
+
+  const usage = useMemo(
+    () => plugins.map((_, i) => 30 + ((i * 17 + tick * 7) % 60)),
+    [tick]
+  );
+
   return (
     <section className="mx-auto max-w-6xl px-6 py-14">
       <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
@@ -60,6 +72,35 @@ export default function Integrations() {
                 {p}
               </span>
             ))}
+          </div>
+        </div>
+
+        {/* Animated usage chart */}
+        <div className="mt-8 grid gap-4 rounded-xl border border-white/10 bg-black/40 p-4 sm:grid-cols-2">
+          <div>
+            <div className="text-sm font-medium text-white">Realtime Plugin Usage</div>
+            <div className="mt-3 grid grid-cols-4 gap-2 sm:grid-cols-8">
+              {usage.map((v, i) => (
+                <div key={i} className="flex flex-col items-center">
+                  <div
+                    className="w-4 rounded-md bg-gradient-to-t from-fuchsia-500 to-rose-400 transition-all duration-700"
+                    style={{ height: `${v}%` }}
+                    aria-label={`usage-bar-${i}`}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+          <div>
+            <div className="text-sm font-medium text-white">Top Sources</div>
+            <ul className="mt-3 space-y-2 text-sm text-white/80">
+              {brands.slice(0, 4).map((b) => (
+                <li key={b.name} className="flex items-center justify-between">
+                  <span className="truncate pr-2">{b.name}</span>
+                  <span className="rounded-md bg-white/10 px-2 py-0.5 text-xs text-white/70">Connected</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>
